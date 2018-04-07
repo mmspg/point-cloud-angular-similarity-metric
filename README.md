@@ -1,1 +1,1 @@
-# PointCloud-angular-similarity-metric
+# point-cloud-angular-similarity-metric
