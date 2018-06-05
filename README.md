@@ -1,4 +1,4 @@
-# point-cloud-angular-similarity-metric
+# Point cloud objective quality metric based on angular similarity
 
 Point clouds denote a 3D content representation which has recently gained a significant amount of interest. Among other challenges, objective quality assessment remains an open problem. Thus, new and efficient algorithms are required, able to predict the level of perceptual impairment of a distorted point cloud with respect to its original version. This algorithm is a based on the angular similarity and provides a normal-based alternative approach for objective quality assessment of point clouds contents.
 
