@@ -4,7 +4,7 @@ Point clouds denote a 3D content representation which has recently gained a sign
 
 The angular similarity reflects the different orientation of tangent planes that correspond to pairs of points, which are associated as nearest neighbors between point clouds A and B. Tangent planes can be viewed as a local linear approximation of the underlying surfaces of the model. Thus, the angular similarity between two tangent planes provides an indication of the difference between local surfaces that pass by the corresponding points. 
 
-This metric requires the normals of both the original and the distorted contents. In case there are no normals present in a content, they should be estimated
+This metric requires the normals of both the original and the distorted contents. In case there are no normals present in a content by default, they should be estimated before using this code.
 
 
 If you use this code in your research, please cite our paper:
