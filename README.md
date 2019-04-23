@@ -9,6 +9,7 @@ This metric requires the normals of both the original and the distorted contents
 
 If you use this code in your research, please cite our paper:
 
-E. Alexiou; T. Ebrahimi : Point cloud quality assessment metric based on angular similarity. 2018. International Conference on Multimedia and Expo (ICME), San Diego, USA, July 23-27, 2018.
+E. Alexiou and T. Ebrahimi, "Point Cloud Quality Assessment Metric Based on Angular Similarity," 2018 IEEE International Conference on Multimedia and Expo (ICME), San Diego, CA, 2018, pp. 1-6. doi: 10.1109/ICME.2018.8486512
 
-URL: https://infoscience.epfl.ch/record/254987?ln=en
+URL @ Infoscience: https://infoscience.epfl.ch/record/254987?ln=en
+URL @ IEEEXplore:  https://ieeexplore.ieee.org/document/8486512
