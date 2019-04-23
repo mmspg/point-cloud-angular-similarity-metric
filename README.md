@@ -12,4 +12,5 @@ If you use this code in your research, please cite our paper:
 E. Alexiou and T. Ebrahimi, "Point Cloud Quality Assessment Metric Based on Angular Similarity," 2018 IEEE International Conference on Multimedia and Expo (ICME), San Diego, CA, 2018, pp. 1-6. doi: 10.1109/ICME.2018.8486512
 
 URL @ Infoscience: https://infoscience.epfl.ch/record/254987?ln=en
+
 URL @ IEEEXplore:  https://ieeexplore.ieee.org/document/8486512
