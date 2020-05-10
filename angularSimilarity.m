@@ -77,20 +77,19 @@ end
 % Set A as the reference. Loop over B and find nearest neighbor in A
 [n1, ~] = knnsearch(A.Location, B.Location);
 as_BA = (pi - 2*acos(abs(sum(A.Normal(n1,:).*B.Normal,2))))/pi;
-as_BA(isnan(as_BA)) = [];
 
 if strcmp(ERRORTYPE, 'mean')
-    asBA = mean(real(as_BA));
+    asBA = nanmean(real(as_BA));
 elseif strcmp(ERRORTYPE, 'min')
-    asBA = min(real(as_BA));
+    asBA = nanmin(real(as_BA));
 elseif strcmp(ERRORTYPE, 'max')
-    asBA = max(real(as_BA));
+    asBA = nanmax(real(as_BA));
 elseif strcmp(ERRORTYPE, 'median')
-    asBA = mean(real(as_BA));
+    asBA = nanmedian(real(as_BA));
 elseif strcmp(ERRORTYPE, 'RMS')
-    asBA = sqrt(mean(real(as_BA).^2));
+    asBA = sqrt(nanmean(real(as_BA).^2));
 elseif strcmp(ERRORTYPE, 'MSE')
-    asBA = mean(real(as_BA).^2);
+    asBA = nanmean(real(as_BA).^2);
 else
     error('WrongInput');
 end
@@ -98,23 +97,22 @@ end
 % Set B as the reference. Loop over A and find nearest neighbor in B
 [n2, ~] = knnsearch(B.Location, A.Location);
 as_AB = (pi - 2*acos(abs(sum(B.Normal(n2,:).*A.Normal,2))))/pi;
-as_AB(isnan(as_AB)) = [];
 
 if strcmp(ERRORTYPE, 'mean')
-    asAB = mean(real(as_AB));
+    asAB = nanmean(real(as_AB));
 elseif strcmp(ERRORTYPE, 'min')
-    asAB = min(real(as_AB));
+    asAB = nanmin(real(as_AB));
 elseif strcmp(ERRORTYPE, 'max')
-    asAB = max(real(as_AB));
+    asAB = nanmax(real(as_AB));
 elseif strcmp(ERRORTYPE, 'median')
-    asAB = mean(real(as_AB));
+    asAB = nanmedian(real(as_AB));
 elseif strcmp(ERRORTYPE, 'RMS')
-    asAB = sqrt(mean(real(as_AB).^2));
+    asAB = sqrt(nanmean(real(as_AB).^2));
 elseif strcmp(ERRORTYPE, 'MSE')
-    asAB = mean(real(as_AB).^2);
+    asAB = nanmean(real(as_AB).^2);
 else
     error(message('WrongInput'));
 end
 
 % Symmetric total similarity
-asSym = min(asBA, asAB);
+asSym = nanmin(asBA, asAB);
