@@ -9,7 +9,7 @@ This metric requires the normals of both the original and the distorted models. 
 For more details, the reader can refer to [1].
 
 ![alt text](/docs/plane_to_plane.png)
-*Angular similarity between tangent planes (plane-to-plane)*
+*\*Angular similarity between tangent planes (plane-to-plane)*
 
 
 ### Conditions of use
