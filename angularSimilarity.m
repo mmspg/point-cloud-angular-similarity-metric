@@ -37,7 +37,7 @@ function [asBA, asAB, asSym] = angularSimilarity(A, B, ERRORTYPE)
 %       coordinates (e.g., A.Location) and the normal vectors (e.g.,
 %       A.Normal) of the input point clouds A and B must exist.
 %       ERRORTYPE: Defines how the total similarity is computed, based on
-%       the functions 'min', 'mean', 'median', 'max', 'RMS', or 'MSE'.
+%       the functions 'min', 'mean', 'median', 'max', 'rms', or 'mse'.
 %
 %   OUTPUTS
 %       asBA: The total similarity obtained with point cloud A being the
@@ -48,7 +48,7 @@ function [asBA, asAB, asSym] = angularSimilarity(A, B, ERRORTYPE)
 %       on ERRORTYPE selection.
 %
 %   Example:
-%   [asBA, asAB, asSym] = angularSimilarity(A, B, 'MSE')
+%   [asBA, asAB, asSym] = angularSimilarity(A, B, 'mse')
 
 
 
@@ -73,10 +73,9 @@ if isempty(A.Normal) || isempty(B.Normal)
 end
 
 
-
 % Set A as the reference. Loop over B and find nearest neighbor in A
 [n1, ~] = knnsearch(A.Location, B.Location);
-as_BA = (pi - 2*acos(abs(sum(A.Normal(n1,:).*B.Normal,2))))/pi;
+as_BA = 1 - 2*acos(abs( sum(A.Normal(n1,:).*B.Normal,2)./(sqrt(sum(A.Normal(n1,:).^2,2)).*sqrt(sum(B.Normal.^2,2))) ))/pi;
 
 if strcmp(ERRORTYPE, 'mean')
     asBA = nanmean(real(as_BA));
@@ -86,9 +85,9 @@ elseif strcmp(ERRORTYPE, 'max')
     asBA = nanmax(real(as_BA));
 elseif strcmp(ERRORTYPE, 'median')
     asBA = nanmedian(real(as_BA));
-elseif strcmp(ERRORTYPE, 'RMS')
+elseif strcmp(ERRORTYPE, 'rms')
     asBA = sqrt(nanmean(real(as_BA).^2));
-elseif strcmp(ERRORTYPE, 'MSE')
+elseif strcmp(ERRORTYPE, 'mse')
     asBA = nanmean(real(as_BA).^2);
 else
     error('WrongInput');
@@ -96,7 +95,7 @@ end
 
 % Set B as the reference. Loop over A and find nearest neighbor in B
 [n2, ~] = knnsearch(B.Location, A.Location);
-as_AB = (pi - 2*acos(abs(sum(B.Normal(n2,:).*A.Normal,2))))/pi;
+as_AB = 1 - 2*acos(abs( sum(A.Normal.*B.Normal(n2,:),2)./(sqrt(sum(A.Normal.^2,2)).*sqrt(sum(B.Normal(n2,:).^2,2))) ))/pi;
 
 if strcmp(ERRORTYPE, 'mean')
     asAB = nanmean(real(as_AB));
@@ -106,9 +105,9 @@ elseif strcmp(ERRORTYPE, 'max')
     asAB = nanmax(real(as_AB));
 elseif strcmp(ERRORTYPE, 'median')
     asAB = nanmedian(real(as_AB));
-elseif strcmp(ERRORTYPE, 'RMS')
+elseif strcmp(ERRORTYPE, 'rms')
     asAB = sqrt(nanmean(real(as_AB).^2));
-elseif strcmp(ERRORTYPE, 'MSE')
+elseif strcmp(ERRORTYPE, 'mse')
     asAB = nanmean(real(as_AB).^2);
 else
     error(message('WrongInput'));
