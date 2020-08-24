@@ -13,10 +13,10 @@ To compute point cloud angular similarity scores:
 
 For more details, the reader can refer to [1].  
 
+**UPDATED**: A benchmarking study on the performance of the metric as a function of the normal estimation algorithm and configuration, is reported in [2]. The impact of the neighborhood selection is examined and best-practices for high performance are indicated, using as ground truth widely-used subjectively annotated point cloud data sets.
+
 ![alt text](/docs/plane_to_plane.png)
 *\*Angular similarity between tangent planes (plane-to-plane).*
-
-**UPDATED**: A benchmarking study on the performance of the metric as a function of the normal estimation algorithm and configuration, is reported in [2]. The impact of the neighborhood selection is examined and best-practices for high performance are indicated, using as ground truth widely-used subjectively annotated point cloud data sets.
 
 ### Conditions of use
 
