@@ -58,7 +58,7 @@ elseif nargin==2
     ERRORTYPE = 'mean';
 elseif nargin>2
     switch ERRORTYPE
-        case {'min', 'mean', 'median', 'max', 'RMS', 'MSE'}
+        case {'min', 'mean', 'median', 'max', 'rms', 'mse'}
         otherwise
             error('ERRORTYPE is not supported.');
     end
