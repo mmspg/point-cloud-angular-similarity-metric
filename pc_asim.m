@@ -42,7 +42,7 @@ function [asimBA, asimAB, asimSym] = pc_asim(A, B, POOLING_TYPE)
 %       POOLING_TYPE: Defines the pooling method that is applied on
 %           individual angular similarity values obtained from pairs of
 %           associated points. The following options are available:
-%           {'Mean', 'Min', 'Max', 'MSE', 'RMS'}.
+%           {'Mean', 'Min', 'Max', 'MS', 'RMS'}.
 %
 %   OUTPUTS
 %       asimBA: Angular similarity score of point cloud B, using A as
@@ -59,7 +59,7 @@ elseif nargin==2
     POOLING_TYPE = 'Mean';
 elseif nargin>2
     switch POOLING_TYPE
-        case {'Mean', 'Min', 'Max', 'MSE', 'RMS'}
+        case {'Mean', 'Min', 'Max', 'MS', 'RMS'}
         otherwise
             error('POOLING_TYPE is not supported.');
     end
@@ -92,7 +92,7 @@ elseif strcmp(POOLING_TYPE, 'Min')
     asimBA = nanmin(real(asBA));
 elseif strcmp(POOLING_TYPE, 'Max')
     asimBA = nanmax(real(asBA));
-elseif strcmp(POOLING_TYPE, 'MSE')
+elseif strcmp(POOLING_TYPE, 'MS')
     asimBA = nanmean(real(asBA).^2);
 elseif strcmp(POOLING_TYPE, 'RMS')
     asimBA = sqrt(nanmean(real(asBA).^2));
@@ -110,9 +110,9 @@ if strcmp(POOLING_TYPE, 'Mean')
     asimAB = nanmean(real(asAB));
 elseif strcmp(POOLING_TYPE, 'Min')
     asimAB = nanmin(real(asAB));
-elseif strcmp(POOLING_TYPE, 'Min')
+elseif strcmp(POOLING_TYPE, 'Max')
     asimAB = nanmax(real(asAB));
-elseif strcmp(POOLING_TYPE, 'MSE')
+elseif strcmp(POOLING_TYPE, 'MS')
     asimAB = nanmean(real(asAB).^2);
 elseif strcmp(POOLING_TYPE, 'RMS')
     asimAB = sqrt(nanmean(real(asAB).^2));
